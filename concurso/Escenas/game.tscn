@@ -1,29 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkfbb15bbtb2i"]
+[gd_scene load_steps=5 format=3 uid="uid://bkfbb15bbtb2i"]
 
-[ext_resource type="Texture2D" uid="uid://cckt1v106dlnr" path="res://Imagenes/fondo4.jpg" id="1_0bm41"]
 [ext_resource type="Script" uid="uid://cr5ygikg7qwlq" path="res://Scripts/game.gd" id="1_obr3f"]
+[ext_resource type="Script" uid="uid://cysf83a3ho10j" path="res://Scripts/parallax_layer.gd" id="2_3418m"]
+[ext_resource type="Texture2D" uid="uid://bk883kdfv0xee" path="res://Imagenes/fondo2(1).png" id="2_obr3f"]
+[ext_resource type="Script" uid="uid://dggu0dcnrw0dq" path="res://Scripts/contenedor_obstaculo.gd" id="4_5g6uq"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_obr3f")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1154.0
-offset_bottom = 644.0
-texture = ExtResource("1_0bm41")
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="Button" type="Button" parent="TextureRect"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 4.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 50
-text = "ATRAS"
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1100, 0)
+script = ExtResource("2_3418m")
 
-[connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(565, 322)
+scale = Vector2(0.446094, 0.254688)
+texture = ExtResource("2_obr3f")
+
+[node name="ContenedorObstaculo" type="Node2D" parent="."]
+script = ExtResource("4_5g6uq")
+
+[node name="tiempo_de_generacion" type="Timer" parent="ContenedorObstaculo"]
+wait_time = 2.0
+one_shot = true
+autostart = true
