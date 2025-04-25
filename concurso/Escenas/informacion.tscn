@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvpi5lv3b07df"]
+
+[ext_resource type="Script" uid="uid://donfgotb61v1l" path="res://Scripts/informacion.gd" id="1_jk8a7"]
+[ext_resource type="Texture2D" uid="uid://dr7hcx4u8snpj" path="res://Imagenes/fondo3.jpeg" id="1_wcqn0"]
+
+[node name="Informacion" type="Node2D"]
+script = ExtResource("1_jk8a7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1150.0
+offset_bottom = 651.0
+
+[node name="Fondo3" type="Sprite2D" parent="."]
+position = Vector2(577, 329.5)
+scale = Vector2(0.71125, 0.5475)
+texture = ExtResource("1_wcqn0")
+
+[node name="Salir" type="Button" parent="Fondo3"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -939.0
+offset_top = -745.0
+offset_right = -661.0
+offset_bottom = -600.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "ATRAS"
+
+[connection signal="pressed" from="Fondo3/Salir" to="." method="_on_salir_pressed"]
